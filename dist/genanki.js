@@ -329,8 +329,8 @@ class Package {
         this.media.push({ name: name || filename, filename })
     }
 
-    writeToFile(filename) {
-        var db = new SQL.Database();
+    writeToFile(filename, sql) {
+        var db = new sql.Database();
         db.run(APKG_SCHEMA);
 
         this.write(db)
