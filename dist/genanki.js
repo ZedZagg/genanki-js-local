@@ -329,7 +329,7 @@ class Package {
         this.media.push({ name: name || filename, filename })
     }
 
-    writeToFile(filename, sql) {
+    generateZip(filename, sql) {
         var db = new sql.Database();
         db.run(APKG_SCHEMA);
 
@@ -356,10 +356,7 @@ class Package {
 
         zip.file('media', JSON.stringify(media_info))
 
-        zip.generateAsync({ type: "blob", mimeType: "application/apkg" }).then(function (content) {
-            // see FileSaver.js
-            saveAs(content, filename);
-        });
+        return await zip.generateAsync({ type: "blob", mimeType: "application/apkg" })
     }
 
 
