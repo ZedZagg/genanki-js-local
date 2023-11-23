@@ -329,7 +329,7 @@ class Package {
         this.media.push({ name: name || filename, filename })
     }
 
-    generateZip(filename, sql) {
+    async generateZip(filename, sql) {
         var db = new sql.Database();
         db.run(APKG_SCHEMA);
 
